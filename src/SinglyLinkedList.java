@@ -66,4 +66,13 @@ public class SinglyLinkedList {
 		tail = newest;
 		size++;
 	}
+	
+	public void removeFirst() {
+		if (isEmpty()) return;
+		head = head.getNext();
+		size--;
+		if (size == 0)
+			tail = null;
+		return;
+	}
 }
