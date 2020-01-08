@@ -11,7 +11,7 @@ public class Recursive {
 		
 	}
 	
-	public static int linearSum(int[ ] data, int n) {
+	public int linearSum(int[ ] data, int n) {
 		if (n == 0)
 			return 0;
 		else
