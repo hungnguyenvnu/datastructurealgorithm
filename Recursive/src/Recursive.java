@@ -19,10 +19,10 @@ public class Recursive {
 	}
 	
 	// Fibonacci 
-	public int fibonacci(int[ ] data, int n) {
-		if (n == 0)
-			return 0;
+	public int fibonacci(int n) {
+		if (n <= 1)
+			return n;
 		else
-			return linearSum(data, n−1) + data[n−1];
+			return fibonacci(n−2) + fibonacci(n−1);
 	}
 }
