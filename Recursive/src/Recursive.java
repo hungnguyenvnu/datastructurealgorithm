@@ -17,4 +17,12 @@ public class Recursive {
 		else
 			return linearSum(data, n−1) + data[n−1];
 	}
+	
+	// Fibonacci 
+	public int fibonacci(int[ ] data, int n) {
+		if (n == 0)
+			return 0;
+		else
+			return linearSum(data, n−1) + data[n−1];
+	}
 }
