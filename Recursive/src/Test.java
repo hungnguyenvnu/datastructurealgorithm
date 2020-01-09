@@ -6,6 +6,8 @@ public class Test {
 		Recursive rec = new Recursive();
 		int a = rec.factorial(4);
 		System.out.println("a = " + a);
+		int b = rec.fibonacci(3);
+		System.out.println("b = " + b);
 	}
 
 }
