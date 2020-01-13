@@ -26,6 +26,18 @@ public class Recursive {
 			return fibonacci(n-2) + fibonacci(n-1);
 	}
 	
+	// Fibonacci with O(n)
+	public long[] fibonacciGood(int n) {
+		if (n <= 1) {
+			long[] answer = {n, 0};
+			return answer;
+		} else {
+			long[] temp = fibonacciGood(n - 1);
+			long[] answer = {temp[0] + temp[1], temp[0]};
+			return answer;
+		}
+	}
+	
 	public void reverseArray(int data[], int low, int high) {
 		if (low < high){ 
 			int temp = data[low];

@@ -8,6 +8,8 @@ public class Test {
 		System.out.println("a = " + a);
 		int b = rec.fibonacci(3);
 		System.out.println("b = " + b);
+		long[] c = rec.fibonacciGood(5);
+		System.out.println(c[0] + "  " + c[1]);
 	}
 
 }
