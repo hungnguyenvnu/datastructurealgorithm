@@ -17,44 +17,14 @@ int Queue::front() {
 	return sLinkedList.front();
 }
 
-//void Queue::enqueue(int data) 
-//{
-//	sLinkedList.addFront(data);
-//	n++;
-//}
+void Queue::enqueue(int iData)
+{
+	sLinkedList.insertFront(iData);
+	n++;
+}
 
-void Queue::dequeue() {
-	// Queue is empty
-	if (empty()) 
-	{
-		std::cout << "Queue is empty" << std::endl;
-	}
-	else 
-	{
-		Node* current = sLinkedList.getHead();
-		// Queue has 1 element
-		if (current->pNext == NULL) 
-		{
-			Node* temp = current;
-			current = NULL;
-			delete temp;
-		}
-		else 
-		{
-			// Queue has at least 2 elements
-			Node* temp = current->pNext;
-			while (temp != NULL) 
-			{
-				if (temp->pNext == NULL) 
-				{
-					current->pNext = NULL;
-					delete temp;
-					break;
-				}
-				current = current->pNext;
-				temp = temp->pNext;
-			}
-		}
-		n--;
-	}
+void Queue::dequeue() 
+{
+	sLinkedList.removeLast();
+	n--;
 }

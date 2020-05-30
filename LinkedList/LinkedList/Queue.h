@@ -12,7 +12,7 @@ public:
     int size();
     bool empty();
     int front();
-    void enqueue(int e);
+    void enqueue(int iData);
     void dequeue();
 };
 
