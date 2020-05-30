@@ -2,28 +2,33 @@
 
 Stack::Stack() : sLinkedList(), n(0) {}
 
-int Stack::size() 
+int Stack::size() const
 {
 	return n;
 }
 
 bool Stack::empty() 
 {
-	return n == 0;
+	return (n == 0);
 }
 
-int Stack::top() 
+int Stack::top()
 {
 	if (!empty())
+	{
 		return sLinkedList.front();
-	return NULL;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-//void Stack::push(int data) 
-//{
-//	sLinkedList.addFront(data);
-//	n++;
-//}
+void Stack::push(int iData) 
+{
+	sLinkedList.insertFront(iData);
+	n++;
+}
 
 void Stack::pop() 
 {
