@@ -1,17 +1,22 @@
 #include <iostream>
 #include "SinglyLinkedList.h"
-#include "Stack.h"
-#include "Queue.h"
+//#include "Stack.h"
+//#include "Queue.h"
 
 
 int main() {
-	SinglyLinkedList* singlyLinkedList = new SinglyLinkedList();
-	singlyLinkedList->addFront(10);
-	singlyLinkedList->addFront(20);
-	singlyLinkedList->addFront(30);
-	singlyLinkedList->print();
+	SinglyLinkedList* pSinglyLinkedList = new SinglyLinkedList();
+	pSinglyLinkedList->insertFront(10);
+	pSinglyLinkedList->insertFront(20);
+	pSinglyLinkedList->insertLast(30);
 
-	Stack* stack = new Stack();
+	Node *pPreNode = pSinglyLinkedList->getHead()->pNext;
+	pSinglyLinkedList->insertAfterNode(pPreNode, 40);
+	pSinglyLinkedList->print();
+
+	
+
+	/*Stack* stack = new Stack();
 	stack->push(10);
 	stack->push(20);
 	stack->push(30);
@@ -26,7 +31,9 @@ int main() {
 	std::cout << queue->size() << std::endl;
 	queue->dequeue();
 	std::cout << queue->front() << std::endl;
-	std::cout << queue->size() << std::endl;
+	std::cout << queue->size() << std::endl;*/
+
+	system("PAUSE");
 
 	return 0;
 }

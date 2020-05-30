@@ -3,26 +3,30 @@
 #include <iostream>
 
 struct Node {
-	int data;
+	int iData;
 	Node* pNext;
 };
 
 class SinglyLinkedList
 {
 private:
-	Node* head;
-	int size;
+	Node*			pHead; // Head points to first element of linked list
+	unsigned int	uSize; // Number element of linked list
 public:
 	SinglyLinkedList();
 	~SinglyLinkedList();
-	bool empty();
-	int front();
-	void addFront(int data);
-	void removeFront();
-	int getSize();
-	void print();
-	Node* getHead() 
-	{
-		return head;
-	}
+
+	bool	empty();
+	int		front() const;
+	int		getSize() const;
+	Node*	getHead() const;
+
+	// Insert node
+	void	insertFront(int iData);						// Insert new node in front of list
+	void	insertLast(int iData);						// Insert new node at the end of list
+	void	insertAfterNode(Node *pPreNode, int iData);	// Insert new node after a node
+	void	removeFront();
+	void	print();
+
+	
 };
