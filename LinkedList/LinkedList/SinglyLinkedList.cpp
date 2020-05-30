@@ -83,13 +83,38 @@ void SinglyLinkedList::insertAfterNode(Node *pPreNode, int iData)
 	}
 }
 
-
 void SinglyLinkedList::removeFront() 
 {
 	Node *pTemp = pHead;
 	pHead = pTemp->pNext;
 	delete pTemp;
 	uSize--;
+}
+
+void SinglyLinkedList::removeLast()
+{
+	Node* pTemp = pHead;
+	if (pHead == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		if (pHead->pNext == nullptr)
+		{
+			delete pTemp;
+			pHead->pNext = nullptr;
+		}
+		else
+		{
+			while (pTemp->pNext->pNext != nullptr)
+			{
+				pTemp = pTemp->pNext;
+			}
+			delete pTemp->pNext;
+			pTemp->pNext = nullptr;
+		}
+	}
 }
 
 void SinglyLinkedList::print() 

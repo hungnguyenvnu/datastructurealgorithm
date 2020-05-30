@@ -8,14 +8,17 @@ int main() {
 	SinglyLinkedList* pSinglyLinkedList = new SinglyLinkedList();
 	pSinglyLinkedList->insertFront(10);
 	pSinglyLinkedList->insertFront(20);
+	pSinglyLinkedList->insertFront(50);
 	pSinglyLinkedList->insertLast(30);
 
-	Node *pPreNode = pSinglyLinkedList->getHead()->pNext;
+	Node *pPreNode = pSinglyLinkedList->getHead();
 	pSinglyLinkedList->insertAfterNode(pPreNode, 40);
 	pSinglyLinkedList->print();
 
-	
-
+	pSinglyLinkedList->removeFront();
+	pSinglyLinkedList->removeLast();
+	std::cout << std::endl;
+	pSinglyLinkedList->print();
 	/*Stack* stack = new Stack();
 	stack->push(10);
 	stack->push(20);

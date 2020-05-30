@@ -25,7 +25,11 @@ public:
 	void	insertFront(int iData);						// Insert new node in front of list
 	void	insertLast(int iData);						// Insert new node at the end of list
 	void	insertAfterNode(Node *pPreNode, int iData);	// Insert new node after a node
-	void	removeFront();
+
+	// Delete node
+	void	removeFront();	// Delete first node in linked list
+	void	removeLast();	// Delete last node in linked list
+
 	void	print();
 
 	

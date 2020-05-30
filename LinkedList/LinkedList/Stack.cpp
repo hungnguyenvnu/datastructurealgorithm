@@ -19,11 +19,11 @@ int Stack::top()
 	return NULL;
 }
 
-void Stack::push(int data) 
-{
-	sLinkedList.addFront(data);
-	n++;
-}
+//void Stack::push(int data) 
+//{
+//	sLinkedList.addFront(data);
+//	n++;
+//}
 
 void Stack::pop() 
 {

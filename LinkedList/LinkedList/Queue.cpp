@@ -17,11 +17,11 @@ int Queue::front() {
 	return sLinkedList.front();
 }
 
-void Queue::enqueue(int data) 
-{
-	sLinkedList.addFront(data);
-	n++;
-}
+//void Queue::enqueue(int data) 
+//{
+//	sLinkedList.addFront(data);
+//	n++;
+//}
 
 void Queue::dequeue() {
 	// Queue is empty
