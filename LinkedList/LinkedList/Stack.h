@@ -8,10 +8,10 @@ private:
 	int n;
 public: 
 	Stack();
-	int size();
+	int size() const;
 	bool empty();
-	// Return the first element
-	int top(); 
-	void push(int data);
+
+	int top(); // Return the first element
+	void push(int iData);
 	void pop();
 };
