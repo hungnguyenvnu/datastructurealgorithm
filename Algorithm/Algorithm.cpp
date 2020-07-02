@@ -44,7 +44,7 @@ int main()
     //std::cout << "Hello World!\n" << min << std::endl;
 
     // Find the first non repeated character
-    std::string str = "abccbed";
+    std::string str = "Nguyen Van Hung";
     HashTable hashTable;
     for (int i = 0; i < str.length(); i++)
     {
