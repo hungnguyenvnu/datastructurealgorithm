@@ -1,0 +1,2 @@
+E:\Github\datastructurealgorithm\Sorting\Debug\Sorting.exe
+E:\Github\datastructurealgorithm\Sorting\Debug\Sorting.pdb

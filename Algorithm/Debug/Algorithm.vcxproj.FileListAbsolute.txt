@@ -1,0 +1,2 @@
+E:\Github\datastructurealgorithm\Algorithm\Debug\Algorithm.exe
+E:\Github\datastructurealgorithm\Algorithm\Debug\Algorithm.pdb

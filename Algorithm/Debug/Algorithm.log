@@ -1,0 +1,3 @@
+﻿  Algorithm.cpp
+E:\Github\datastructurealgorithm\Algorithm\Algorithm.cpp(49,23): warning C4018: '<': signed/unsigned mismatch
+  Algorithm.vcxproj -> E:\Github\datastructurealgorithm\Algorithm\Debug\Algorithm.exe
