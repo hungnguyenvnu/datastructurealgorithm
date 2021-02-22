@@ -156,12 +156,13 @@ void LinkedList<T>::RemoveDuplicate()
 	}
 }
 
-// Find the kth to last element of singly linked list
+// Find the kth to last element of singly linked list 
+// Get node value from tail
 template <typename T>
 void LinkedList<T>::PrintKthToLast(int k)
 {
 	// Solution #1: If size of linked list is know, print element at (length - k)
-	// Solution #2: 
+	// Solution #2: Recursive
 }
 
 template <typename T>

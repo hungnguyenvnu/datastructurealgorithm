@@ -23,6 +23,8 @@ public:
 	void DeleteNodeByValue(T data);
 	void RemoveDuplicate();
 	void PrintKthToLast(int k);
+
+	void DeleteMidleNode();
 	
 	void PrintList();
 };
