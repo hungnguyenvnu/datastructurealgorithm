@@ -1,4 +1,0 @@
-﻿  Revise.cpp
-E:\Bitbucket\datastructure\Revise\Revise\Revise.cpp(21,23): warning C4018: '<': signed/unsigned mismatch
-Passenger.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
-  Revise.vcxproj -> E:\Bitbucket\datastructure\Revise\Debug\Revise.exe
