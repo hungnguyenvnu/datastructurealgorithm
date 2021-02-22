@@ -165,6 +165,25 @@ void LinkedList<T>::PrintKthToLast(int k)
 	// Solution #2: Recursive
 }
 
+// Reverse a linked list
+template <typename T>
+Node<T>* LinkedList<T>::ReverseLinkedList()
+{
+	Node<T>* pCurrNode = pHead;
+	Node<T>* pPrevNode = nullptr;
+	Node<T>* pNextNode = nullptr;
+
+	while (pCurrNode != nullptr)
+	{
+		pNextNode = pCurrNode->pNext;
+		pCurrNode->pNext = pPrevNode;
+		pPrevNode = pCurrNode;
+		pCurrNode = pNextNode;
+	}
+	pHead = pPrevNode;
+	return pHead;
+}
+
 template <typename T>
 void LinkedList<T>::PrintList()
 {
@@ -197,7 +216,10 @@ int main()
 	//pList->RemoveDuplicate();
 	
 	//pList->DeleteNodeAt(3);
-	pList->DeleteNodeByValue(8);
+	//pList->DeleteNodeByValue(8);
+	pList->PrintList();
+	Node<int>* pHead = pList->GetHeadNode();
+	pHead  = pList->ReverseLinkedList();
 	pList->PrintList();
 	return 0;
 }
