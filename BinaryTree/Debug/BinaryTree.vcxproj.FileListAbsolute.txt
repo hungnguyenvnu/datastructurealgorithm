@@ -1,2 +1,0 @@
-E:\Bitbucket\datastructure\BinaryTree\Debug\BinaryTree.exe
-E:\Bitbucket\datastructure\BinaryTree\Debug\BinaryTree.pdb
