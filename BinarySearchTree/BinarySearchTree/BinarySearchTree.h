@@ -14,6 +14,7 @@ class BinarySearchTree
 {
 private:
 	Node* m_pRoot;
+	int		DeleteMin		(Node* pNode);
 public:
 	BinarySearchTree();
 	~BinarySearchTree();
@@ -21,7 +22,15 @@ public:
 	{
 		return m_pRoot;
 	}
-	Node* Insert(int nData, Node *pNode);
-	void PrintPreOrder(Node *pNode);
+	Node*	Insert			(int nData, Node *pNode);
+	bool	Search			(int nData, Node* pNode);
+
+	void	PrintPreOrder	(Node *pNode);
+	void	PrintInOrder	(Node* pNode);
+	void	PrintPostOrder	(Node* pNode);
+	int		FindMinData		(Node* pNode);
+	int		FindMaxData		(Node* pNode);
+	void	Delete			(Node* pNode, int nData);
+	int		HeightOfTree	(Node* pNode);
 };
 

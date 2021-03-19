@@ -23,8 +23,10 @@ public:
 	void DeleteNodeByValue(T data);
 	void RemoveDuplicate();
 	void PrintKthToLast(int k);
-
-	void DeleteMidleNode();
+	Node<T>* GetHeadNode() {
+		return pHead;
+	}
+	Node<T>* ReverseLinkedList();
 	
 	void PrintList();
 };
