@@ -1,0 +1,32 @@
+// Remove duplicated from sorted array
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) 
+    {
+        int nSize = nums.size();
+        if (nSize <= 1)
+        {
+            iRet = nSize;
+        }
+        else
+        {
+            auto itPrev = nums.begin();
+            auto itNext = itPrev + 1;
+            
+            while (itNext != nums.end())
+            {
+                if (*itPrev == *itNext)
+                {
+                    itNext = nums.erase(itNext);
+                    nSize--;
+                }
+                else
+                {
+                    itPrev++;
+                    itNext++;
+                }
+            }
+        }
+        return nSize;
+    }
+};
