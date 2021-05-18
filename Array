@@ -30,3 +30,44 @@ public:
         return nSize;
     }
 };
+
+
+// Contain duplicated
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        bool bRet = false;
+        int nSize = nums.size();
+        
+        // 1st solution: Use 2 for loop: 
+        for (int i = 0; i < nSize; i++)
+        {
+            for (int j = i + 1; j < nSize; j++)
+            {
+                if (nums.at(i) == nums.at(j))
+                {
+                    bRet = true;
+                    break;
+                }
+            }
+            if (bRet == true)
+            {
+                break;
+            }
+        }
+        
+        // 2nd solution: sort then check same element
+        std::sort(nums.begin(), nums.end());
+        
+        for (int i = 0; i < (nSize - 1); i++)
+        {
+            if (nums.at(i) == nums.at(i+1))
+            {
+                bRet = true;
+                break;
+            }
+            
+        }
+        return bRet;
+    }
+};
