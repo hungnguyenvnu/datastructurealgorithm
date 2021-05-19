@@ -71,3 +71,48 @@ public:
         return bRet;
     }
 };
+
+// Find the third largest number in array
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+	 int nSize = nums.size();
+	 if (nSize == 1)
+	 {
+		 return nums.at(0);
+	 }
+	 else if (nSize == 2)
+	 {
+		 return std::max(nums.at(0), nums.at(1));
+	 }
+	 else
+	 {
+		 int nFirst = INT_MIN;
+		 int nSecond = INT_MIN;
+		 int nThird = INT_MIN;
+		 for (int i = 0; i < nSize; i++)
+		 {
+			 int nElm = nums.at(i);
+			 if (nElm > nFirst)
+			 {
+				 nThird = nSecond;
+				 nSecond = nFirst;
+				 nFirst = nElm;
+			 }
+             // Elm is between first and second
+			 else if (nElm > nSecond && nElm < nFirst)
+			 {
+				 nThird = nSecond;
+				 nSecond = nElm;
+			 }
+             // Elm is between third and nsecond
+			 else if (nElm > nThird && nElm < nSecond)
+			 {
+				 nThird = nElm;
+			 }
+		 }
+		 return nThird;
+	 }
+    }
+        
+};
