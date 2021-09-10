@@ -24,17 +24,7 @@ LinkedList<T>::~LinkedList()
 template <typename T>
 bool LinkedList<T>::IsEmpty()
 {
-	return (nLength == 0);
-}
-
-template <typename T>
-void LinkedList<T>::InsertFirst(int nData)
-{
-	Node<T>* pNewNode = new Node<T>;
-	pNewNode->data = nData;
-	pNewNode->pNext = pHead;
-	pHead = pNewNode;
-	nLength++;
+	return ((nLength == 0) || (pHead == nullptr));
 }
 
 template <typename T>
@@ -59,6 +49,18 @@ void LinkedList<T>::DeleteAllNode()
 	}
 }
 
+
+template <typename T>
+void LinkedList<T>::InsertFirst(int nData)
+{
+	Node<T>* pNewNode = new Node<T>;
+	pNewNode->data = nData;
+	pNewNode->pNext = pHead;
+	pHead = pNewNode;
+	nLength++;
+}
+
+
 // Delete node at K position
 template <typename T>
 void LinkedList<T>::DeleteNodeAt(int kPos)
@@ -66,7 +68,7 @@ void LinkedList<T>::DeleteNodeAt(int kPos)
 	if (kPos >= 0 && kPos < nLength)
 	{
 		Node<T>* pCurrNode = pHead;
-		if (nIdx == 0)
+		if (kPos == 0)
 		{
 			pHead = pHead->pNext;
 			delete pCurrNode;
@@ -93,11 +95,8 @@ void LinkedList<T>::DeleteNodeAt(int kPos)
 template <typename T>
 void LinkedList<T>::DeleteNodeByValue(T data)
 {
-	if (IsEmpty())
-	{
-		std::cout << "List is empty";
-	}
-	else
+	bool bEmpty = IsEmpty();
+	if (!bEmpty))
 	{
 		Node<T>* pCurrNode = pHead;
 		Node<T>* pTemp = nullptr;
@@ -122,6 +121,10 @@ void LinkedList<T>::DeleteNodeByValue(T data)
 			}
 			pCurrNode = pCurrNode->pNext;
 		}
+	}
+	else
+	{
+		std::cout << "List is empty";
 	}
 }
 
@@ -189,11 +192,8 @@ Node<T>* LinkedList<T>::ReverseLinkedList()
 template <typename T>
 void LinkedList<T>::PrintList()
 {
-	if (IsEmpty())
-	{
-		std::cout << "List is empty" << std::endl;
-	}
-	else
+	bool bEmpty = IsEmpty();
+	if (!bEmpty)
 	{
 		Node<T>* pNode = pHead;
 		while (pNode != nullptr)
@@ -201,6 +201,10 @@ void LinkedList<T>::PrintList()
 			std::cout << pNode->data << " ";
 			pNode = pNode->pNext;
 		}
+	}
+	else
+	{
+		std::cout << "List is empty" << std::endl;
 	}
 }
 
