@@ -24,10 +24,12 @@ public:
 	void DeleteNodeAt(int nIdx);
 	void DeleteNodeByValue(T data);
 	void RemoveDuplicate();
-	void PrintKthToLast(int k);
-	Node<T>* GetHeadNode() {
+	void PrintKthToLast(int kPos);
+	Node<T>* GetHeadNode() 
+	{
 		return pHead;
 	}
+	
 	Node<T>* ReverseLinkedList();
 	
 	void PrintList();
