@@ -1,5 +1,0 @@
-﻿  ArrayNString.cpp
-E:\Github\datastructurealgorithm\ArrayNString\ArrayNString.cpp(11,20): warning C4018: '<': signed/unsigned mismatch
-E:\Github\datastructurealgorithm\ArrayNString\ArrayNString.cpp(48,20): warning C4018: '<': signed/unsigned mismatch
-E:\Github\datastructurealgorithm\ArrayNString\ArrayNString.cpp(54,20): warning C4018: '<': signed/unsigned mismatch
-  ArrayNString.vcxproj -> E:\Github\datastructurealgorithm\ArrayNString\Debug\ArrayNString.exe
