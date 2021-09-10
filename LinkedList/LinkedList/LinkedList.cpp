@@ -40,11 +40,8 @@ void LinkedList<T>::InsertFirst(int nData)
 template <typename T>
 void LinkedList<T>::DeleteAllNode()
 {
-	if (IsEmpty())
-	{
-		std::cout << "List is empty" << std::endl;
-	}
-	else
+	bool bEmpty = IsEmpty();
+	if (!bEmpty)
 	{
 		// Delete all node
 		Node<T>* pNode = pHead;
@@ -56,17 +53,17 @@ void LinkedList<T>::DeleteAllNode()
 			nLength--;
 		}
 	}
+	else
+	{
+		std::cout << "List is empty" << std::endl;
+	}
 }
 
 // Delete node at K position
 template <typename T>
 void LinkedList<T>::DeleteNodeAt(int kPos)
 {
-	if (kPos < 0 || kPos >= nLength)
-	{
-		std::cout << "Exceed length of linked list";
-	}
-	else
+	if (kPos >= 0 && kPos < nLength)
 	{
 		Node<T>* pCurrNode = pHead;
 		if (nIdx == 0)
@@ -85,6 +82,10 @@ void LinkedList<T>::DeleteNodeAt(int kPos)
 			delete pTemp;
 		}
 		nLength--;
+	}
+	else
+	{
+		std::cout << "Exceed length of linked list";
 	}
 }
 
