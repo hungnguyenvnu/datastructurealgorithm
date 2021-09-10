@@ -24,7 +24,7 @@ LinkedList<T>::~LinkedList()
 template <typename T>
 bool LinkedList<T>::IsEmpty()
 {
-	return nLength == 0;
+	return (nLength == 0);
 }
 
 template <typename T>
@@ -60,9 +60,9 @@ void LinkedList<T>::DeleteAllNode()
 
 // Delete node at K position
 template <typename T>
-void LinkedList<T>::DeleteNodeAt(int nIdx)
+void LinkedList<T>::DeleteNodeAt(int kPos)
 {
-	if (nIdx < 0 || nIdx >= nLength)
+	if (kPos < 0 || kPos >= nLength)
 	{
 		std::cout << "Exceed length of linked list";
 	}
@@ -76,7 +76,7 @@ void LinkedList<T>::DeleteNodeAt(int nIdx)
 		}
 		else
 		{
-			for (int i = 0; i < nIdx; i++)
+			for (int i = 0; i < kPos; i++)
 			{
 				pCurrNode = pCurrNode->pNext;
 			}
