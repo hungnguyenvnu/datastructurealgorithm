@@ -20,12 +20,17 @@
   
 * Difference between Linked List and Array
 
-Arrays | Linked List
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+No | Arrays | Linked List
+------------ | ------------ | -------------
+Memory Allocation | Stored in a contiguous block of memory | Stored at different memory locations
+Size | Specified at the time of declaration and cannot be changed afterward | Added or removed from the linked list
+Space utilization | Overall less | Required to store pointers next to nodes
+Accessing elements | O(1) |  Traversed from the first element up to the required element
+Search options | Linear search and Binary search | Linear search only
 
 References
 [1] https://www.geeksforgeeks.org/applications-of-linked-list-data-structure/
+
 [2] Data Structure and Algorithm in C++, Chapter 3
+
 [3] https://www.educative.io/edpresso/what-are-the-differences-between-arrays-and-linked-lists
