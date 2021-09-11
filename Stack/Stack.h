@@ -8,21 +8,11 @@ private:
 	int nData;
 	Node* pNext;
 public:		
-		// Constructor
-	Node (int nData) 
-	{
-		this->nData = nData;
-		this->pNext = nullptr;
-	}
+	// Constructor
+	Node (int nData);
 		
-	int GetData() 
-	{
-		return nData;
-	}
-	Node* GetNext()
-	{
-	    return pNext;
-	}
+	int GetData(); 
+	Node* GetNext();
 };
 
 class Stack 
@@ -32,68 +22,14 @@ private:
 	Node* pTail = nullptr;
 	int nSize = 0;
 public:
-	Stack() {}
+	Stack();
 	
-	int Size() 
-	{
-		return nSize;
-	}
-	
-	bool IsEmpty() 
-	{
-		return (nSize == 0);
-	}
-	
-	int First() 
-	{
-		if (IsEmpty()) 
-		{
-		    std::cout << "List is empty!\n";
-			return 0;
-		}
-		return pHead->GetData();
-	}
-	
-	int Last() 
-	{
-		if (IsEmpty()) 
-		{
-			std::cout << "List is empty!\n";
-			return 0;
-		}
-		return pTail->GetData();
-	}
-	
-	void Push(int nData) 
-	{
-		Node* pNewNode = new Node(nData);
-		if (IsEmpty()) 
-		{
-			pHead = pTail = pNewNode;
-		} 
-		else 
-		{
-		    Node* pNextNode = pNewNode->GetNext();
-			pNextNode = pHead;
-			pHead = pNewNode;
-		}
-		nSize++;
-		return;
-	}
-	
-	void Pop() 
-	{
-		if (IsEmpty()) 
-		{
-			return;
-		}
-		pHead = pHead->GetNext();
-		nSize--;
-		if (nSize == 0) 
-		{
-			pTail = nullptr;
-		}
-	}
+	int Size();
+	bool IsEmpty();
+	int First();
+	int Last();
+	void Push(int nData);
+	void Pop();
 };
 
 
