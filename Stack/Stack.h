@@ -19,13 +19,17 @@ public:
 	{
 		return nData;
 	}
+	Node* GetNext()
+	{
+	    return pNext;
+	}
 };
 
 class Stack 
 {
 private:
-	Node* pHead = null;
-	Node* pTail = null;
+	Node* pHead = nullptr;
+	Node* pTail = nullptr;
 	int nSize = 0;
 public:
 	Stack() {}
@@ -40,7 +44,8 @@ public:
 		return (nSize == 0);
 	}
 	
-	int First() {
+	int First() 
+	{
 		if (IsEmpty()) 
 		{
 		    std::cout << "List is empty!\n";
@@ -49,7 +54,8 @@ public:
 		return pHead->GetData();
 	}
 	
-	int Last() {
+	int Last() 
+	{
 		if (IsEmpty()) 
 		{
 			std::cout << "List is empty!\n";
@@ -58,37 +64,38 @@ public:
 		return pTail->GetData();
 	}
 	
-	void Push(int nData) {
-		Node newest = new Node(e, head);
-		if (isEmpty()) {
-			head = tail = newest;
-		} else {
-			Node newNext = newest.getNext(); 
-			newNext = head;
-			head = newest;
+	void Push(int nData) 
+	{
+		Node* pNewNode = new Node(nData);
+		if (IsEmpty()) 
+		{
+			pHead = pTail = pNewNode;
+		} 
+		else 
+		{
+		    Node* pNextNode = pNewNode->GetNext();
+			pNextNode = pHead;
+			pHead = pNewNode;
 		}
-		size++;
+		nSize++;
 		return;
 	}
 	
-	void Pop() {
-		if (isEmpty()) {
+	void Pop() 
+	{
+		if (IsEmpty()) 
+		{
 			return;
 		}
-		head = head.getNext();
-		size--;
-		if (size == 0) {
-			tail = null;
+		pHead = pHead->GetNext();
+		nSize--;
+		if (nSize == 0) 
+		{
+			pTail = nullptr;
 		}
 	}
 };
 
-int main()
-{
-    cout<<"Hello World";
-
-    return 0;
-}
 
 #endif // _STACK_H_
 
