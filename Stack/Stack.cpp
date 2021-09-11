@@ -9,91 +9,88 @@ private:
 	Node* pNext;
 public:		
 		// Constructor
-	Node (int nData) 
-	{
-		this->nData = nData;
-		this->pNext = nullptr;
-	}
-		
-	int GetData() 
-	{
-		return nData;
-	}
-	Node* GetNext()
-	{
-	    return pNext;
-	}
+	
 };
-
-class Stack 
+Node::Node (int nData) 
 {
-private:
-	Node* pHead = nullptr;
-	Node* pTail = nullptr;
-	int nSize = 0;
-public:
-	Stack() {}
+	this->nData = nData;
+	this->pNext = nullptr;
+}
+		
+int Node::GetData() 
+{
+	return nData;
+}
+Node* Node::GetNext()
+{
+    return pNext;
+}
+
+// Default constructor
+Stack::Stack() 
+{
+	//
+}
 	
-	int Size() 
+int Stack::Size() 
+{
+	return nSize;
+}
+
+bool Stack::IsEmpty() 
+{
+	return (nSize == 0);
+}
+
+int Stack::First() 
+{
+	if (IsEmpty()) 
 	{
-		return nSize;
+	    std::cout << "List is empty!\n";
+		return 0;
 	}
-	
-	bool IsEmpty() 
+	return pHead->GetData();
+}
+
+int Stack::Last() 
+{
+	if (IsEmpty()) 
 	{
-		return (nSize == 0);
+		std::cout << "List is empty!\n";
+		return 0;
 	}
-	
-	int First() 
+	return pTail->GetData();
+}
+
+void Stack::Push(int nData) 
+{
+	Node* pNewNode = new Node(nData);
+	if (IsEmpty()) 
 	{
-		if (IsEmpty()) 
-		{
-		    std::cout << "List is empty!\n";
-			return 0;
-		}
-		return pHead->GetData();
+		pHead = pTail = pNewNode;
+	} 
+	else 
+	{
+	    Node* pNextNode = pNewNode->GetNext();
+		pNextNode = pHead;
+		pHead = pNewNode;
 	}
-	
-	int Last() 
+	nSize++;
+	return;
+}
+
+void Stack::Pop() 
+{
+	if (IsEmpty()) 
 	{
-		if (IsEmpty()) 
-		{
-			std::cout << "List is empty!\n";
-			return 0;
-		}
-		return pTail->GetData();
-	}
-	
-	void Push(int nData) 
-	{
-		Node* pNewNode = new Node(nData);
-		if (IsEmpty()) 
-		{
-			pHead = pTail = pNewNode;
-		} 
-		else 
-		{
-		    Node* pNextNode = pNewNode->GetNext();
-			pNextNode = pHead;
-			pHead = pNewNode;
-		}
-		nSize++;
 		return;
 	}
-	
-	void Pop() 
+	pHead = pHead->GetNext();
+	nSize--;
+	if (nSize == 0) 
 	{
-		if (IsEmpty()) 
-		{
-			return;
-		}
-		pHead = pHead->GetNext();
-		nSize--;
-		if (nSize == 0) 
-		{
-			pTail = nullptr;
-		}
+		pTail = nullptr;
 	}
-};
+}
 
 ```
