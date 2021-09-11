@@ -36,6 +36,6 @@ public:
 
 #endif // _STACK_H_
 
-// 2nd: utilize Linked List implementation with 2 methods: AddFirst and RemoveLast
+// 2nd: utilize Linked List implementation with 2 methods: AddFirst and RemoveFirst
 
 ```
