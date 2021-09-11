@@ -2,80 +2,98 @@
 #include <iostream>
 #include "Stack.h"
 
+class Node 
+{
+private:
+	int nData;
+	Node* pNext;
+public:		
+		// Constructor
+	Node (int nData) 
+	{
+		this->nData = nData;
+		this->pNext = nullptr;
+	}
+		
+	int GetData() 
+	{
+		return nData;
+	}
+	Node* GetNext()
+	{
+	    return pNext;
+	}
+};
+
 class Stack 
 {
-  private static class Node {
-		private String element;
-		private Node next;
-		
-		// Constructor
-		public Node (String e, Node n) {
-			element = e;
-			next = n;
-		}
-		
-		public String getElement() {
-			return element;
-		}
-		
-		public Node getNext() {
-			return next;
-		}
-		
-		public void setNext(Node n) {
-			next = n;
-		}
+private:
+	Node* pHead = nullptr;
+	Node* pTail = nullptr;
+	int nSize = 0;
+public:
+	Stack() {}
+	
+	int Size() 
+	{
+		return nSize;
 	}
 	
-	private Node head = null;
-	private Node tail = null;
-	int size = 0;
-	public Stack() {}
-	
-	public int size() {
-		return size;
+	bool IsEmpty() 
+	{
+		return (nSize == 0);
 	}
 	
-	public boolean isEmpty() {
-		return size == 0;
-	}
-	
-	public String first() {
-		if (isEmpty()) {
-			return null;
+	int First() 
+	{
+		if (IsEmpty()) 
+		{
+		    std::cout << "List is empty!\n";
+			return 0;
 		}
-		return head.getElement();
+		return pHead->GetData();
 	}
 	
-	public String last() {
-		if (isEmpty()) {
-			return null;
+	int Last() 
+	{
+		if (IsEmpty()) 
+		{
+			std::cout << "List is empty!\n";
+			return 0;
 		}
-		return tail.getElement();
+		return pTail->GetData();
 	}
 	
-	public void push(String e) {
-		Node newest = new Node(e, head);
-		if (isEmpty()) {
-			head = tail = newest;
-		} else {
-			Node newNext = newest.getNext(); 
-			newNext = head;
-			head = newest;
+	void Push(int nData) 
+	{
+		Node* pNewNode = new Node(nData);
+		if (IsEmpty()) 
+		{
+			pHead = pTail = pNewNode;
+		} 
+		else 
+		{
+		    Node* pNextNode = pNewNode->GetNext();
+			pNextNode = pHead;
+			pHead = pNewNode;
 		}
-		size++;
+		nSize++;
 		return;
 	}
 	
-	public void pop() {
-		if (isEmpty()) {
+	void Pop() 
+	{
+		if (IsEmpty()) 
+		{
 			return;
 		}
-		head = head.getNext();
-		size--;
-		if (size == 0) {
-			tail = null;
+		pHead = pHead->GetNext();
+		nSize--;
+		if (nSize == 0) 
+		{
+			pTail = nullptr;
 		}
 	}
+};
 
 ```
