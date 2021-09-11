@@ -15,6 +15,7 @@ public:
 	Node* GetNext();
 };
 
+// 1st: using 2 pointer: head and tail
 class Stack 
 {
 private:
@@ -34,5 +35,7 @@ public:
 
 
 #endif // _STACK_H_
+
+// 2nd: utilize Linked List implementation with 2 methods: AddFirst and RemoveLast
 
 ```
