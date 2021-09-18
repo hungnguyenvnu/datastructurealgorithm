@@ -1,6 +1,0 @@
-﻿  BinarySearchTree.cpp
-E:\Github\datastructurealgorithm\BinarySearchTree\BinarySearchTree\BinarySearchTree.cpp(47): warning C4715: 'BinarySearchTree::Search': not all control paths return a value
-E:\Github\datastructurealgorithm\BinarySearchTree\BinarySearchTree\BinarySearchTree.cpp(62): warning C4715: 'BinarySearchTree::FindMinData': not all control paths return a value
-E:\Github\datastructurealgorithm\BinarySearchTree\BinarySearchTree\BinarySearchTree.cpp(77): warning C4715: 'BinarySearchTree::FindMaxData': not all control paths return a value
-E:\Github\datastructurealgorithm\BinarySearchTree\BinarySearchTree\BinarySearchTree.cpp(120): warning C4715: 'BinarySearchTree::DeleteMin': not all control paths return a value
-  BinarySearchTree.vcxproj -> E:\Github\datastructurealgorithm\BinarySearchTree\Debug\BinarySearchTree.exe
