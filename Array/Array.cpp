@@ -148,7 +148,7 @@ bool IsPermutation(std::string& strInput1, std::string& strInput2)
 
 bool OneEditAway(std::string& strInput1, std::string& strInput2)
 {
-    bool bRet = false;
+    bool bRet = true;
     int nLength1 = strInput1.length();
     int nLength2 = strInput2.length();
 
@@ -191,18 +191,11 @@ bool OneEditAway(std::string& strInput1, std::string& strInput2)
                 nIdx2++;
             }
         }
-        if (nDiffChar <= 1)
-        {
-            bRet = true;
-        }
-        else
-        {
-            bRet = false;
-        }
+        bRet = (nDiffChar <= 1) ? true : false;
     }
     else
     {
-        // do nothing
+        bRet = false;
     }
     return bRet;
 }
@@ -218,48 +211,47 @@ bool OneEditAway(std::string& strInput1, std::string& strInput2)
 
 // #Solution1:O(n^2)
 // Row => Column and Column => Row
-void RotateMatrix(int** arr, int n)
+void RotateMatrix(std::vector<std::vector<int>> vecVecMat, int n)
 {
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            arr[j][n - 1 - i] = arr[i][j];
+            vecVecMat[j][n - 1 - i] = vecVecMat[i][j];
         }
     }
 }
 
 // #Solution2:O(n^2)
 // Transpose matrix
-//void RotateMatrix(int** arr, int n)
-//{
-//    // Transpose
-//    for (int i = 0; i < n; i++)
-//    {
-//        for (int j = 0; j < n; j++)
-//        {
-//            int nTemp = arr[i][j];
-//            arr[i][j] = arr[j][i];
-//            arr[j][i] = nTemp;
-//        }
-//    }
-//
-//    // Reverse
-//    for (int i = 0; i < n; i++)
-//    {
-//        for (int j = 0; j < n/2; j++)
-//        {
-//            int nTemp = arr[i][j];
-//            arr[i][j] = arr[i][n - 1 - j];
-//            arr[i][n - 1 - j] = nTemp;
-//        }
-//    }
-//}
+void RotateMatrixByTranspose(std::vector<std::vector<int>> vecVecMat, int n)
+{
+    // Transpose
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            int nTemp = vecVecMat[i][j];
+            vecVecMat[i][j] = vecVecMat[j][i];
+            vecVecMat[j][i] = nTemp;
+        }
+    }
+
+    // Reverse
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n/2; j++)
+        {
+            int nTemp = vecVecMat[i][j];
+            vecVecMat[i][j] = vecVecMat[i][n - 1 - j];
+            vecVecMat[i][n - 1 - j] = nTemp;
+        }
+    }
+}
 
 
 // Dynamic programming
-
-int LongestCommonSubsequent(std::string strInput1, std::string strInput2)
+int LongestCommonSubsequent(const std::string& strInput1, const std::string& strInput2)
 {
     int iIdx = 0;
     int jIdx = 0;
