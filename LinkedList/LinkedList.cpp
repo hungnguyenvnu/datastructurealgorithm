@@ -1,232 +1,208 @@
-```
-/*
-* An implementation of linked list
-*
-*  Created on: Feb 20th, 2021
-*      Author: Vincent Nguyen
-*/
+// LinkedList.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
 #include <iostream>
+#include <map>
 #include "LinkedList.h"
 
-template <typename T>
-LinkedList<T>::LinkedList()
+
+LinkedList::LinkedList() : m_nLength {0}, m_pHead{nullptr}
 {
-	this->nLength = 0;
-	this->pHead = nullptr;
 }
 
-template <typename T>
-LinkedList<T>::~LinkedList()
+LinkedList::~LinkedList()
 {
-	DeleteAllNode();
+    Node* pTemp = m_pHead;
+    while (pTemp != nullptr)
+    {
+        Node* pCur = pTemp;
+        pTemp = pTemp->pNext;
+        delete pCur;
+    }
 }
 
-template <typename T>
-bool LinkedList<T>::IsEmpty()
+bool LinkedList::IsEmpty()
 {
-	return ((nLength == 0) || (pHead == nullptr));
+    return ((m_nLength == 0) || (m_pHead == nullptr));
 }
 
-template <typename T>
-void LinkedList<T>::DeleteAllNode()
+int LinkedList::GetLength()
 {
-	bool bEmpty = IsEmpty();
-	if (!bEmpty)
-	{
-		// Delete all node
-		Node<T>* pNode = pHead;
-		while (pNode != nullptr)
-		{
-			Node<T>* pCurr = pNode;
-			pNode = pNode->pNext;
-			delete pCurr;
-			nLength--;
-		}
-	}
-	else
-	{
-		std::cout << "List is empty" << std::endl;
-	}
+    return m_nLength;
 }
 
-
-template <typename T>
-void LinkedList<T>::InsertFirst(int nData)
+void LinkedList::AppendNode(int nData)
 {
-	Node<T>* pNewNode = new Node<T>;
-	pNewNode->data = nData;
-	pNewNode->pNext = pHead;
-	pHead = pNewNode;
-	nLength++;
+    Node* pNewNode = new Node;
+    pNewNode->nData = nData;
+    pNewNode->pNext = nullptr;
+
+    if (IsEmpty())
+    {
+        m_pHead = pNewNode;
+    }
+    else
+    {
+        pNewNode->pNext = m_pHead;
+        m_pHead = pNewNode;
+    }
+    m_nLength++;
 }
 
-
-// Delete node at K position
-template <typename T>
-void LinkedList<T>::DeleteNodeAt(int kPos)
+void LinkedList::DeleteNodeatAt(int nIdx)
 {
-	if (kPos >= 0 && kPos < nLength)
-	{
-		Node<T>* pCurrNode = pHead;
-		if (kPos == 0)
-		{
-			pHead = pHead->pNext;
-			delete pCurrNode;
-		}
-		else
-		{
-			for (int i = 0; i < kPos; i++)
-			{
-				pCurrNode = pCurrNode->pNext;
-			}
-			Node<T>* pTemp = pCurrNode->pNext;
-			pCurrNode->pNext = pCurrNode->pNext->pNext;
-			delete pTemp;
-		}
-		nLength--;
-	}
-	else
-	{
-		std::cout << "Exceed length of linked list";
-	}
 }
 
-// Delete node has value T
-template <typename T>
-void LinkedList<T>::DeleteNodeByValue(T data)
+void LinkedList::DeleteNodesByValue(int nValue)
 {
-	bool bEmpty = IsEmpty();
-	if (!bEmpty))
-	{
-		Node<T>* pCurrNode = pHead;
-		Node<T>* pTemp = nullptr;
-		// Delete the first node
-		if (!IsEmpty() && pCurrNode->data == data)
-		{
-			pTemp = pCurrNode;
-			pHead = pCurrNode->pNext;
-			pCurrNode = pCurrNode->pNext;
-			delete pTemp;
-			nLength--;
-		}
-		// Traverse linked list to delete node
-		while (!IsEmpty() && pCurrNode->pNext != nullptr)
-		{
-			if (pCurrNode->pNext->data == data)
-			{
-				pTemp = pCurrNode->pNext;
-				pCurrNode->pNext = pCurrNode->pNext->pNext;
-				delete pTemp;
-				nLength--;
-			}
-			pCurrNode = pCurrNode->pNext;
-		}
-	}
-	else
-	{
-		std::cout << "List is empty";
-	}
+    if (!IsEmpty())
+    {
+        Node* pCur = m_pHead;
+
+        // Delete first node
+        if (m_pHead->nData == nValue)
+        {
+            Node* pTemp = pCur;
+            pCur = pCur->pNext;
+            m_pHead = pCur;
+            delete pTemp;
+            m_nLength--;
+        }
+
+        while ((!IsEmpty()) && (pCur->pNext != nullptr))
+        {
+            if (pCur->pNext->nData == nValue)
+            {
+                Node* pTemp = pCur->pNext;
+                pCur->pNext = pCur->pNext->pNext;;
+                delete pTemp;
+                m_nLength--;
+            }
+            pCur = pCur->pNext;
+        }
+    }
+    else
+    {
+        std::cout << "List empty!";
+    }
 }
 
-// Remove duplicates from an unsorted linked list
-template <typename T>
-void LinkedList<T>::RemoveDuplicate()
+void LinkedList::Print()
 {
-	// Using temporary map
-
-	// Temporary buffer is not allowed
-	// Using 2 pointer: pCurrNode which iterates through the linked list
-	//					pRunnerNode which check all subsequent nodes for dupplicate
-
-	Node<T>* pCurrNode = pHead;
-	while (pCurrNode != nullptr)
-	{
-		// Remove all future node that have same value
-		Node<T>* pRunnerNode = pCurrNode;
-		while (pRunnerNode->pNext != nullptr)
-		{
-			if (pRunnerNode->pNext->data == pCurrNode->data)
-			{
-				Node<T>* pTemp = pRunnerNode->pNext;
-				pRunnerNode->pNext = pRunnerNode->pNext->pNext;
-				delete pTemp;
-				nLength--;
-			}
-			else
-			{
-				pRunnerNode = pRunnerNode->pNext;
-			}
-		}
-		pCurrNode = pCurrNode->pNext;
-	}
+    Node* pTemp = m_pHead;
+    while (pTemp != nullptr)
+    {
+        std::cout << pTemp->nData << std::endl;
+        pTemp = pTemp->pNext;
+    }
 }
 
-// Find the kth to last element of singly linked list 
-// Get node value from tail
-template <typename T>
-void LinkedList<T>::PrintKthToLast(int k)
+// Cracking coding interview
+// 2.1 - Remove Dups
+// Write code to remove duplicated from an unsorted linked list
+// Using 2 pointers to traverse list
+void LinkedList::RemoveDuplicate()
 {
-	// Solution #1: If size of linked list is know, print element at (length - k)
-	// Solution #2: Recursive
+    if (!IsEmpty())
+    {
+        Node* pCur = m_pHead;
+        while (pCur != nullptr)
+        {
+            Node* pRun = pCur;
+            while (pRun->pNext != nullptr)
+            {
+                if (pRun->pNext->nData == pCur->nData)
+                {
+                    Node* pTemp = pRun->pNext;
+                    pRun->pNext = pRun->pNext->pNext;
+                    delete pTemp;
+                    m_nLength--;
+                }
+                else
+                {
+                    pRun = pRun->pNext;
+                }
+
+            }
+            pCur = pCur->pNext;
+        }
+    }
+    else
+    {
+        std::cout << "List empty!";
+    }
 }
 
-// Reverse a linked list
-template <typename T>
-Node<T>* LinkedList<T>::ReverseLinkedList()
+void LinkedList::RemoveDuplicateSorted()
 {
-	Node<T>* pCurrNode = pHead;
-	Node<T>* pPrevNode = nullptr;
-	Node<T>* pNextNode = nullptr;
+    if (!IsEmpty())
+    {
+        std::map<int, int> mapValue;
+        Node* pCur = m_pHead;
+        while (pCur != nullptr) 
+        {
+            mapValue[pCur->nData]++;
+            pCur = pCur->pNext;
+        }
+        int nNumOnlyOneNode = 0;
+        for (auto& elm : mapValue) 
+        {
+            if (elm.second == 1)
+            {
+                nNumOnlyOneNode++;
+            }
+        }
+        m_nLength = nNumOnlyOneNode;
 
-	while (pCurrNode != nullptr)
-	{
-		pNextNode = pCurrNode->pNext;
-		pCurrNode->pNext = pPrevNode;
-		pPrevNode = pCurrNode;
-		pCurrNode = pNextNode;
-	}
-	pHead = pPrevNode;
-	return pHead;
-}
+        if (nNumOnlyOneNode == 0)
+        {
+            return; // all nodes values are repeated more than once
+        }
+            
+        int nNode = 0;
 
-template <typename T>
-void LinkedList<T>::PrintList()
-{
-	bool bEmpty = IsEmpty();
-	if (!bEmpty)
-	{
-		Node<T>* pNode = pHead;
-		while (pNode != nullptr)
-		{
-			std::cout << pNode->data << " ";
-			pNode = pNode->pNext;
-		}
-	}
-	else
-	{
-		std::cout << "List is empty" << std::endl;
-	}
+        pCur = m_pHead;
+        for (auto& elm : mapValue) 
+        {
+            if (elm.second == 1) 
+            {
+                pCur->nData = elm.first;
+                nNode++;
+                if (nNode != nNumOnlyOneNode)
+                {
+                    pCur = pCur->pNext;
+                }
+            }
+        }
+        pCur->pNext = nullptr;
+    }
+    else
+    {
+        std::cout << "List empty!";
+    }
 }
 
 int main()
 {
-	LinkedList<int>* pList = new LinkedList<int>;
+    LinkedList* pLinkedList = new LinkedList;
 
-	for (int i = 9; i >= 0; i--)
-	{
-		pList->InsertFirst(i);
-	}
-	//pList->InsertFirst(3);
-	//pList->PrintList();
-	//std::cout << std::endl;
-	//pList->RemoveDuplicate();
-	
-	//pList->DeleteNodeAt(3);
-	//pList->DeleteNodeByValue(8);
-	pList->PrintList();
-	Node<int>* pHead = pList->GetHeadNode();
-	pHead  = pList->ReverseLinkedList();
-	pList->PrintList();
-	return 0;
+    //1,2,3,3,4,4,5
+    pLinkedList->AppendNode(5);
+    pLinkedList->AppendNode(4);
+    pLinkedList->AppendNode(4);
+
+    pLinkedList->AppendNode(3);
+    pLinkedList->AppendNode(3);
+    pLinkedList->AppendNode(2);
+    pLinkedList->AppendNode(1);
+
+    //pLinkedList->DeleteNodesByValue(6);
+    //pLinkedList->RemoveDuplicate();
+    pLinkedList->RemoveDuplicateSorted();
+
+    pLinkedList->Print();
+
+    std::cout << pLinkedList->GetLength();
+
+    return 0;
 }
-```

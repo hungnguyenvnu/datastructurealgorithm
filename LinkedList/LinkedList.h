@@ -1,39 +1,30 @@
-```
-#ifndef _LINKED_LIST_H_
-#define _LINKED_LIST_H_
+#pragma once
 
-template <typename T>
+#include <iostream>
+
 struct Node
 {
-	T data;
-	struct Node* pNext;
+	int		nData = 0;
+	Node* pNext = nullptr;
 };
 
-template <typename T>
 class LinkedList
 {
 private:
-	int nLength;
-	Node<T>* pHead;
+	int		m_nLength	= 0;		// Length of linked list
+	Node*	m_pHead		= nullptr;	// Pointer points to the first node
 public:
 	LinkedList();
 	~LinkedList();
-	void InsertFirst(int nData);
-	bool IsEmpty();
-	void DeleteAllNode();
-	void DeleteNodeAt(int nIdx);
-	void DeleteNodeByValue(T data);
+
+	bool	IsEmpty		();
+	int		GetLength	();
+	void	AppendNode(int nData);
+	void DeleteNodeatAt(int nIdx);
+	void DeleteNodesByValue(int nValue);
+	void Print();
 	void RemoveDuplicate();
-	void PrintKthToLast(int kPos);
-	Node<T>* GetHeadNode() 
-	{
-		return pHead;
-	}
-	
-	Node<T>* ReverseLinkedList();
-	
-	void PrintList();
+	void RemoveDuplicateSorted();
+
 };
 
-#endif // _LINKED_LIST_H_
-```
