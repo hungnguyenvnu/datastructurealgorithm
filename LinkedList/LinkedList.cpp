@@ -5,11 +5,12 @@
 #include <map>
 #include "LinkedList.h"
 
-
+// Constructor
 LinkedList::LinkedList() : m_nLength {0}, m_pHead{nullptr}
 {
 }
 
+// Destructor
 LinkedList::~LinkedList()
 {
     Node* pTemp = m_pHead;
@@ -100,7 +101,8 @@ void LinkedList::Print()
 // Cracking coding interview
 // 2.1 - Remove Dups
 // Write code to remove duplicated from an unsorted linked list
-// Using 2 pointers to traverse list
+// No allow buffer: Using 2 pointers to traverse list
+
 void LinkedList::RemoveDuplicate()
 {
     if (!IsEmpty())
@@ -129,7 +131,60 @@ void LinkedList::RemoveDuplicate()
     }
     else
     {
-        std::cout << "List empty!";
+        std::cout << "List is empty!";
+    }
+}
+
+void LinkedList::RemoveDuplicateUseBuffer()
+{
+    if (!IsEmpty())
+    {
+        std::map<int, int> mapValue;
+        {
+            Node* pCur = m_pHead;
+            while (pCur != nullptr)
+            {
+                if (mapValue.find(pCur->nData) != mapValue.end())
+                {
+                    mapValue[pCur->nData] = 1;
+                }
+                else
+                {
+                    mapValue[pCur->nData]++;
+                }
+                pCur = pCur->pNext;
+            }
+
+            //int nNumOnlyOneNode = 0;
+            //for (auto& elm : mapValue)
+            //{
+            //    if (elm.second == 1)
+            //    {
+            //        nNumOnlyOneNode++;
+            //    }
+            //}
+            //m_nLength = nNumOnlyOneNode;
+
+            //if (nNumOnlyOneNode == 0)
+            //{
+            //    return; // all nodes values are repeated more than once
+            //}
+
+            //int nNode = 0;
+            
+            pCur = m_pHead;
+            std::map<int, int>::iterator iter = mapValue.begin();
+            while (iter != mapValue.end())
+            {
+                pCur->nData = iter->first;
+                pCur = pCur->pNext;
+            }
+            pCur->pNext = nullptr;   
+        }
+    }
+    else
+    {
+        std::cout << "List is empty!";
     }
 }
 
@@ -174,7 +229,8 @@ void LinkedList::RemoveDuplicateSorted()
                 }
             }
         }
-        pCur->pNext = nullptr;
+
+        
     }
     else
     {
