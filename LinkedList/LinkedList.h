@@ -25,6 +25,8 @@ public:
 	void	RemoveDuplicate			(); 
 	void	RemoveDuplicateUseBuffer();
 	void	RemoveDuplicateSorted	();
+	Node*	ReturnKthToLast			(Node* pNode, int k, int& i);
+	bool	DeleteMiddleNode(Node* pNode);
 private:
 	int		m_nLength	= 0;		// Length of linked list
 	Node*	m_pHead		= nullptr;	// Pointer points to the first node

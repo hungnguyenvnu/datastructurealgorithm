@@ -98,8 +98,8 @@ void LinkedList::Print()
     }
 }
 
-// Cracking coding interview
-// 2.1 - Remove Dups
+// Cracking Coding Interview
+// 2.1 - Remove Duplicates
 // Write code to remove duplicated from an unsorted linked list
 // No allow buffer: Using 2 pointers to traverse list
 
@@ -229,14 +229,62 @@ void LinkedList::RemoveDuplicateSorted()
                 }
             }
         }
-
-        
     }
     else
     {
         std::cout << "List empty!";
     }
 }
+// 2.2 Return Kth to Last
+// Implement an algorithm to find the kth to last element of a singly linked list
+
+// Sol 1: Get elements from length - k pos 
+// Sol 2: Recursive (less optimal)
+
+Node* LinkedList::ReturnKthToLast(Node* pNode, int k, int& i)
+{
+    if (m_pHead == nullptr)
+    {
+        return nullptr;
+    }
+    else
+    {
+        Node* pRet = ReturnKthToLast(m_pHead->pNext, k, i);
+        i = i + 1;
+        if (i == k)
+        {
+            return m_pHead;
+        }
+        return pRet;
+    }
+}
+
+
+
+// 2.3 Delete Middle Node
+// Implement an algorithm to delete a node in the middle(i.e., any node but
+// the first and last node, not necessarily the exact middle) of a singly linked list, 
+// given only access to that node.
+
+bool LinkedList::DeleteMiddleNode(Node* pNode)
+{
+    bool bRet = true;
+    if (pNode == nullptr)
+    {
+        bRet = false;
+    }
+    else
+    {
+        pNode->pNext->nData = pNode->nData;
+        Node* pTemp = pNode->pNext;
+        pNode->pNext = pNode->pNext->pNext;
+        delete pTemp;
+        m_nLength--;
+    }
+    return bRet;
+}
+
+
 
 int main()
 {
