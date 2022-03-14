@@ -284,6 +284,47 @@ bool LinkedList::DeleteMiddleNode(Node* pNode)
     return bRet;
 }
 
+// 2.5 Sum list
+// You have two numbers represented by a linked list, where each node contains a single
+// digit.The digits are stored in reverse order, such that the 1 's digit is at the head 
+// of the list. Write a function that adds the two numbers and returns the sum as a linked list.
+
+Node* LinkedList::SumList(Node* ptrNode1, Node* ptrNode2, int carry)
+{
+    Node* pRet = nullptr;
+
+    if (ptrNode1 == nullptr && ptrNode2 == nullptr && carry == 0)
+    {
+        return nullptr;
+    }
+    else
+    {
+        Node* pNewNode = new Node;
+        int value = carry;
+        if (ptrNode1 != nullptr)
+        {
+            value += ptrNode1->nData;
+        }
+        if (ptrNode1 != nullptr)
+        {
+            value += ptrNode2->nData;
+        }
+        pNewNode->nData = value % 10;
+        
+
+        // Recursive
+        if (ptrNode1 != nullptr || ptrNode2 != nullptr)
+        {
+            pRet = SumList(ptrNode1 == nullptr ? nullptr : ptrNode1->pNext,
+                ptrNode2 == nullptr ? nullptr : ptrNode2->pNext,
+                value >= 10 ? 1 : 0);
+            pNewNode->pNext = pRet;
+        }
+
+    }
+    return pRet;
+}
+
 
 
 int main()

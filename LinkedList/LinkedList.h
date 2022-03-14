@@ -27,6 +27,7 @@ public:
 	void	RemoveDuplicateSorted	();
 	Node*	ReturnKthToLast			(Node* pNode, int k, int& i);
 	bool	DeleteMiddleNode(Node* pNode);
+	Node* SumList(Node* ptrNode1, Node* ptrNode2, int carry);
 private:
 	int		m_nLength	= 0;		// Length of linked list
 	Node*	m_pHead		= nullptr;	// Pointer points to the first node
