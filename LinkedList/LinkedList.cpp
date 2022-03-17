@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
 #include "LinkedList.h"
 
 // Constructor
@@ -325,6 +326,42 @@ Node* LinkedList::SumList(Node* ptrNode1, Node* ptrNode2, int carry)
     return pRet;
 }
 
+// 2.6 Palindrome: Implement a function to check if a linked list is a palindrome.
+// Sol 1: Using buffer memory: array
+bool LinkedList::IsLinkedListPalindrome()
+{
+    bool bRet = true;
+    Node* pTemp = m_pHead;
+    std::vector<int> vecData;
+    while (pTemp != nullptr)
+    {
+        vecData.push_back(pTemp->nData);
+        pTemp = pTemp->pNext;
+    }
+
+    if (!vecData.empty())
+    {
+        // Check palindrome
+        int iSize = vecData.size();
+        for (int i = 0; i < iSize/2; i++)
+        {
+            if (vecData.at(i) != vecData.at(iSize - i - 1))
+            {
+                bRet = false;
+                break;
+            }
+        }
+    }
+    else
+    {
+        bRet = false;
+    }
+    return bRet;
+}
+
+// Sol 2: Using stack:
+// push the first half of the elements onto a stack, depending
+// on whether or not we know the size of the linked list.
 
 
 int main()
